@@ -1,0 +1,48 @@
+
+@import yahoofinance.quotes.stock.StockQuote
+@(stocks: List[StockQuote])
+
+@main("The Harvester") {
+
+<div class="container">
+
+ <div class="row">
+  <div class="col-sm-12">
+   <div class="jumbotron">
+    <h1 class="display-3">The Harvester</h1>
+    <p class="lead">
+     we're gonna make a loooot of money together...
+    </p>
+
+   </div>
+  </div>
+ </div>
+</div>
+
+
+<div class="container-fluid">
+ <p>Latest prices</p>
+</div>
+<div class="container-fluid">
+ <div class="row">
+  <table class="table table-striped" >
+   <thead>
+   <th>Index</th>
+   <th>Change in Percent</th>
+   <th>Price</th>
+   <th>Volume</th>
+   </thead>
+   <tbody>
+
+   @for(p <- stocks) {
+   <tr><td>@p.getSymbol</td>
+    <td>@p.getChangeInPercent</td>
+    <td>@p.getPrice</td>
+    <td>@p.getVolume</td></tr>
+   }
+   </tbody>
+  </table>
+ </div>
+</div>
+
+}
